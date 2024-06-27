@@ -25,7 +25,7 @@ body {
     position: absolute; /* Position them absolutely within the container */
 }
 #scrabble-board {
-    background-image: url('../images/Scrabble_Board_OneLine.png');
+    background-image: url('images/Scrabble_Board_OneLine.png');
     background-size: cover;
     position: relative;
     width: 100%;
@@ -40,7 +40,7 @@ body {
     margin-bottom: 20px;
 }
 #tile-rack {
-    background-image: url('../images/scrabble-tile-holder-406774_640.png');
+    background-image: url('images/scrabble-tile-holder-406774_640.png');
     background-size: cover;
     position: absolute;
     height: 100%;
