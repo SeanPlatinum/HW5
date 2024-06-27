@@ -53,6 +53,27 @@ $(document).ready(function() {
         8: 'double-letter', // specificy the locations of them squares, treating the board like an array
         12: 'double-word'
     };
+   
+    function enableDroppable() {
+        $('.board-square').droppable({
+            accept: ".tile",
+            drop: function(event, ui) {
+                const index = $(this).data('index');
+                if ($(this).data('tile')) {
+                    ui.draggable.draggable('option', 'revert', true);
+                } else if (canPlaceTile(index)) {
+                    const tile = ui.helper.data('tile');
+                    const tileImg = $('<img>').attr('src', getTileImage(tile.letter)).addClass('tile-img');
+                    $(this).append(tileImg).data('tile', tile);
+                    ui.helper.remove();
+                    calculateScore();
+                } else {
+                    ui.draggable.draggable('option', 'revert', true);
+                }
+            }
+        });
+    }
+
     function initRack() {
         const tiles = getRandomTiles(7);
         $('#tile-rack').empty(); // clear any existing tiles that may be there 
@@ -129,4 +150,5 @@ $(document).ready(function() {
     });
     initBoard();
     initRack();
+    enableDroppable();
 });
